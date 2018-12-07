@@ -27,21 +27,39 @@ var fs = require("fs");
 var name = process.argv[3];
 var APIKeyOMDB= "";
 var urlOMDB = "http://www.omdbapi.com/?t=" + name + "&y=&plot=full&tomatoes=true&apikey=trilogy";
+var urlMr = "http://www.omdbapi.com/?t=" + "Mr. Nobody" + "&y=&plot=full&tomatoes=true&apikey=trilogy";
 var movieThis=process.argv[2];
 if (movieThis ==="moviethis"){
-    console.log("yo")
+    if (name="undefined"){
+        axios.get(urlMr).then(
+            function(response) {
+              
+                console.log("Title: "+response.data.Title)
+                console.log("Year: "+response.data.Year)
+                console.log("Rated: "+response.data.Rated)
+                console.log("Country: "+response.data.Country)
+                console.log("Language: "+response.data.Language)
+                console.log("Plot: "+response.data.Plot)
+                console.log("Actors: "+response.data.Actors)
+               
+            }
+          )
+    
+    }
+    
+    else{
     axios.get(urlOMDB).then(
         function(response) {
-            console.log(response)
-            var jsonData = JSON.parse(response);
-
-      console.log("Title: " + jsonData.Title);
-         // console.log("Release Year: " + response.data.Year);
+          
+            console.log("Title: "+response.data.Title)
+            console.log("Year: "+response.data.Year)
+            console.log("Rated: "+response.data.Rated)
+            console.log("Country: "+response.data.Country)
+            console.log("Language: "+response.data.Language)
+            console.log("Plot: "+response.data.Plot)
+            console.log("Actors: "+response.data.Actors)
+           
         }
       )
-
+}
 };
-
-// request(urlOMDBt, function(error, response, body) {
-//     if ( ){
-//       var jsonData = JSON.parse(body);
