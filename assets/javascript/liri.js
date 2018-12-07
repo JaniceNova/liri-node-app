@@ -72,19 +72,25 @@ if (doThis === "moviethis") {
 var urlBandName = "https://rest.bandsintown.com/artists/" + name + "/events?app_id=codingbootcamp"
 
 
-if(doThis=== "concertthis"){
+if(doThis === "concertthis"){
         axios.get(urlBandName).then(
             function (response) {
-                console.log(response)
-                console.log("Title: " + response.data.Title)
-                console.log("Year: " + response.data.Year)
-                console.log("Rated: " + response.data.Rated)
-                console.log("Country: " + response.data.Country)
-                console.log("Language: " + response.data.Language)
-                console.log("Plot: " + response.data.Plot)
-                console.log("Actors: " + response.data.Actors)
+               for(i=0; i<response.data.length; i++){
+                //console.log(response)
+                console.log("Lineup: " + response.data[i].lineup)
+                console.log("Venue: " + response.data[i].venue.name)
+                console.log("Location: " + response.data[i].venue.city + ", " + response.data[i].venue.region)
+                console.log("Data: " + response.data[i].datetime)
+                }
             }
         )
     
 
 }
+
+
+///node liri.js concert-this <artist/band name here>---- ends here
+
+
+//spotify starts here
+
