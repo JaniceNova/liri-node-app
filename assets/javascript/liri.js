@@ -1,13 +1,20 @@
+
+var keys = require("./keys");
+
+
 require("dotenv").config();
-var fs = require("fs");
+
 var axios = require("axios");
 var request = require("request");
+
+
+var fs = require("fs");
  //var Spotify = require("node-spotify-api");
 // const keys = require('keys.js');
 // var spotify = new Spotify(keys.spotify);
 // console.log(spotify)
 
-var keys = require("./keys");
+
 
 // var spotify = new Spotify({
 
@@ -17,9 +24,9 @@ var keys = require("./keys");
 // });
 // console.log(spotify)
 
-var name = process.argv[3]
-var APIKeyOMDB= "e707b8fc"
-var urlOMDB = "http://www.omdbapi.com/?t=" + name + "&y=&plot=full&tomatoes=true&apikey=e707b8fc";
+var name = process.argv[3];
+var APIKeyOMDB= "";
+var urlOMDB = "http://www.omdbapi.com/?t=" + name + "&y=&plot=full&tomatoes=true&apikey=trilogy";
 var movieThis=process.argv[2];
 if (movieThis ==="moviethis"){
     console.log("yo")
@@ -31,6 +38,10 @@ if (movieThis ==="moviethis"){
       console.log("Title: " + jsonData.Title);
          // console.log("Release Year: " + response.data.Year);
         }
-      );
+      )
 
-}
+};
+
+// request(urlOMDBt, function(error, response, body) {
+//     if ( ){
+//       var jsonData = JSON.parse(body);
