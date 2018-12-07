@@ -9,7 +9,7 @@ var request = require("request");
 
 
 var fs = require("fs");
- //var Spotify = require("node-spotify-api");
+//var Spotify = require("node-spotify-api");
 // const keys = require('keys.js');
 // var spotify = new Spotify(keys.spotify);
 // console.log(spotify)
@@ -24,42 +24,67 @@ var fs = require("fs");
 // });
 // console.log(spotify)
 
+
+
+
+
+////omdb start----------------------------
 var name = process.argv[3];
-var APIKeyOMDB= "";
+var APIKeyOMDB = "";
 var urlOMDB = "http://www.omdbapi.com/?t=" + name + "&y=&plot=full&tomatoes=true&apikey=trilogy";
 var urlMr = "http://www.omdbapi.com/?t=" + "Mr. Nobody" + "&y=&plot=full&tomatoes=true&apikey=trilogy";
-var movieThis=process.argv[2];
-if (movieThis ==="moviethis"){
-    if (name="undefined"){
+var doThis = process.argv[2];
+if (doThis === "moviethis") {
+    if (name = "undefined") {
         axios.get(urlMr).then(
-            function(response) {
-              
-                console.log("Title: "+response.data.Title)
-                console.log("Year: "+response.data.Year)
-                console.log("Rated: "+response.data.Rated)
-                console.log("Country: "+response.data.Country)
-                console.log("Language: "+response.data.Language)
-                console.log("Plot: "+response.data.Plot)
-                console.log("Actors: "+response.data.Actors)
-               
+            function (response) {
+                console.log("Title: " + response.data.Title)
+                console.log("Year: " + response.data.Year)
+                console.log("Rated: " + response.data.Rated)
+                console.log("Country: " + response.data.Country)
+                console.log("Language: " + response.data.Language)
+                console.log("Plot: " + response.data.Plot)
+                console.log("Actors: " + response.data.Actors)
             }
-          )
-    
+        )
     }
-    
-    else{
-    axios.get(urlOMDB).then(
-        function(response) {
-          
-            console.log("Title: "+response.data.Title)
-            console.log("Year: "+response.data.Year)
-            console.log("Rated: "+response.data.Rated)
-            console.log("Country: "+response.data.Country)
-            console.log("Language: "+response.data.Language)
-            console.log("Plot: "+response.data.Plot)
-            console.log("Actors: "+response.data.Actors)
-           
-        }
-      )
-}
+    else {
+        axios.get(urlOMDB).then(
+            function (response) {
+                console.log("Title: " + response.data.Title)
+                console.log("Year: " + response.data.Year)
+                console.log("Rated: " + response.data.Rated)
+                console.log("Country: " + response.data.Country)
+                console.log("Language: " + response.data.Language)
+                console.log("Plot: " + response.data.Plot)
+                console.log("Actors: " + response.data.Actors)
+            }
+        )
+    }
 };
+//omdb end----------------------------
+
+
+
+
+///node liri.js concert-this <artist/band name here>
+
+var urlBandName = "https://rest.bandsintown.com/artists/" + name + "/events?app_id=codingbootcamp"
+
+
+if(doThis=== "concertthis"){
+        axios.get(urlBandName).then(
+            function (response) {
+                console.log(response)
+                console.log("Title: " + response.data.Title)
+                console.log("Year: " + response.data.Year)
+                console.log("Rated: " + response.data.Rated)
+                console.log("Country: " + response.data.Country)
+                console.log("Language: " + response.data.Language)
+                console.log("Plot: " + response.data.Plot)
+                console.log("Actors: " + response.data.Actors)
+            }
+        )
+    
+
+}
